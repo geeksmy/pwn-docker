@@ -24,8 +24,8 @@ COPY LibcSearcher /root/LibcSearcher
 
 RUN chmod +x /bin/gdbtools.sh && ln -s /bin/gdbtools.sh /bin/gdbtools
 
-RUN ulimit -c unlimited && \
-    echo 1 > /proc/sys/kernel/core_uses_pid
+#RUN ulimit -c unlimited && \
+#    echo 1 > /proc/sys/kernel/core_uses_pid
 
 RUN git clone https://github.com/google/AFL.git /root/AFL --progress --verbose && \
     cd /root/AFL && \
