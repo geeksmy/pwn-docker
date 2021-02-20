@@ -66,8 +66,8 @@ RUN python3 -m pip install -U pip && \
 
 RUN gem install one_gadget seccomp-tools && rm -rf /var/lib/gems/2.*/cache/*
 
-RUN git clone https://github.com/pwndbg/pwndbg && \
-    cd /pwndbg && /bin/sh setup.sh
+RUN git clone https://github.com/pwndbg/pwndbg /root/pwndbg
+    # cd /pwndbg && /bin/sh setup.sh
 # RUN git clone https://github.com/pwndbg/pwndbg && \
 #     cd pwndbg && chmod +x setup.sh && ./setup.sh && \
 #     git clone https://github.com/longld/peda.git /root/peda && \
@@ -88,53 +88,53 @@ RUN git clone https://github.com/pwndbg/pwndbg && \
 
 WORKDIR /ctf/work/
 
-COPY --from=skysider/glibc_builder64:2.19 /glibc/2.19/64 /glibc/2.19/64
-COPY --from=skysider/glibc_builder32:2.19 /glibc/2.19/32 /glibc/2.19/32
+# COPY --from=skysider/glibc_builder64:2.19 /glibc/2.19/64 /glibc/2.19/64
+# COPY --from=skysider/glibc_builder32:2.19 /glibc/2.19/32 /glibc/2.19/32
 
-COPY --from=skysider/glibc_builder64:2.23 /glibc/2.23/64 /glibc/2.23/64
-COPY --from=skysider/glibc_builder32:2.23 /glibc/2.23/32 /glibc/2.23/32
+# COPY --from=skysider/glibc_builder64:2.23 /glibc/2.23/64 /glibc/2.23/64
+# COPY --from=skysider/glibc_builder32:2.23 /glibc/2.23/32 /glibc/2.23/32
 
-COPY --from=skysider/glibc_builder64:2.24 /glibc/2.24/64 /glibc/2.24/64
-COPY --from=skysider/glibc_builder32:2.24 /glibc/2.24/32 /glibc/2.24/32
+# COPY --from=skysider/glibc_builder64:2.24 /glibc/2.24/64 /glibc/2.24/64
+# COPY --from=skysider/glibc_builder32:2.24 /glibc/2.24/32 /glibc/2.24/32
 
-COPY --from=skysider/glibc_builder64:2.28 /glibc/2.28/64 /glibc/2.28/64
-COPY --from=skysider/glibc_builder32:2.28 /glibc/2.28/32 /glibc/2.28/32
+# COPY --from=skysider/glibc_builder64:2.28 /glibc/2.28/64 /glibc/2.28/64
+# COPY --from=skysider/glibc_builder32:2.28 /glibc/2.28/32 /glibc/2.28/32
 
-COPY --from=skysider/glibc_builder64:2.29 /glibc/2.29/64 /glibc/2.29/64
-COPY --from=skysider/glibc_builder32:2.29 /glibc/2.29/32 /glibc/2.29/32
+# COPY --from=skysider/glibc_builder64:2.29 /glibc/2.29/64 /glibc/2.29/64
+# COPY --from=skysider/glibc_builder32:2.29 /glibc/2.29/32 /glibc/2.29/32
 
-COPY --from=skysider/glibc_builder64:2.30 /glibc/2.30/64 /glibc/2.30/64
-COPY --from=skysider/glibc_builder32:2.30 /glibc/2.30/32 /glibc/2.30/32
+# COPY --from=skysider/glibc_builder64:2.30 /glibc/2.30/64 /glibc/2.30/64
+# COPY --from=skysider/glibc_builder32:2.30 /glibc/2.30/32 /glibc/2.30/32
 
-COPY --from=skysider/glibc_builder64:2.27 /glibc/2.27/64 /glibc/2.27/64
-COPY --from=skysider/glibc_builder32:2.27 /glibc/2.27/32 /glibc/2.27/32
+# COPY --from=skysider/glibc_builder64:2.27 /glibc/2.27/64 /glibc/2.27/64
+# COPY --from=skysider/glibc_builder32:2.27 /glibc/2.27/32 /glibc/2.27/32
 
-COPY linux_server linux_server64  /ctf/
+# COPY linux_server linux_server64  /ctf/
 
-RUN chmod a+x /ctf/linux_server /ctf/linux_server64
+# RUN chmod a+x /ctf/linux_server /ctf/linux_server64
 
-RUN apt-get -y update && \
-    #apt purge --autoremove radare2 -y && \
-    apt install -y \
-    clang \
-    binutils-dev \
-    libunwind8-dev \
-    lldb \
-    openvpn \
-    libtool && \
-    #flex && \
-    #libzip-dev && \
-    #radare2 && \
-    rm -rf /var/lib/apt/list/*
+# RUN apt-get -y update && \
+#     #apt purge --autoremove radare2 -y && \
+#     apt install -y \
+#     clang \
+#     binutils-dev \
+#     libunwind8-dev \
+#     lldb \
+#     openvpn \
+#     libtool && \
+#     #flex && \
+#     #libzip-dev && \
+#     #radare2 && \
+#     rm -rf /var/lib/apt/list/*
 
-RUN wget -O /root/.gdbinit-gef.py -q http://gef.blah.cat/py && \
-    echo source /root/.gdbinit-gef.py >> /root/.gdbinit
+# RUN wget -O /root/.gdbinit-gef.py -q http://gef.blah.cat/py && \
+#     echo source /root/.gdbinit-gef.py >> /root/.gdbinit
 
-COPY gdbtools.sh /bin/
+# COPY gdbtools.sh /bin/
 # COPY gdbinit /root/.gdbinit
-COPY .tmux.conf.local /root/.tmux.conf.local
+# COPY .tmux.conf.local /root/.tmux.conf.local
 
-RUN chmod +x /bin/gdbtools.sh && ln -s /bin/gdbtools.sh /bin/gdbtools
+# RUN chmod +x /bin/gdbtools.sh && ln -s /bin/gdbtools.sh /bin/gdbtools
 
 #RUN ulimit -c unlimited && \
 #    echo 1 > /proc/sys/kernel/core_uses_pid
