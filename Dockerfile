@@ -69,7 +69,7 @@ RUN gem install one_gadget seccomp-tools && rm -rf /var/lib/gems/2.*/cache/*
 RUN git clone https://github.com/pwndbg/pwndbg /root/pwndbg && \
     cd /root/pwndbg && \
     chmod +x setup.sh
-RUN ./setup.sh
+RUN /root/pwndbg/setup.sh
 
 # RUN git clone https://github.com/pwndbg/pwndbg && \
 #     cd pwndbg && chmod +x setup.sh && ./setup.sh && \
