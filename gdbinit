@@ -1,5 +1,6 @@
-#source /home/s00s/code/pwndbg/gdbinit.py
-source /pwndbg/gdbinit.py
+#this place is controled by user's shell
+#
+
+#source /pwndbg/gdbinit.py
 #source /root/.gdbinit-gef.py
-#source /root/Pwndbg/pwngdb.py
-#source /root/Pwndbg/angelheap/gdbinit.py
+#source /root/peda/peda.py
