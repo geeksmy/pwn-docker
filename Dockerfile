@@ -66,7 +66,9 @@ RUN python3 -m pip install -U pip && \
 
 RUN gem install one_gadget seccomp-tools && rm -rf /var/lib/gems/2.*/cache/*
 
-RUN git clone https://github.com/pwndbg/pwndbg
+RUN git clone https://github.com/pwndbg/pwndbg && \
+    cd pwndbg && \
+    /bin/sh setup.sh
 # RUN git clone https://github.com/pwndbg/pwndbg && \
 #     cd pwndbg && chmod +x setup.sh && ./setup.sh && \
 #     git clone https://github.com/longld/peda.git /root/peda && \
