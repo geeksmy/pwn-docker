@@ -8,6 +8,7 @@ RUN apt-get -y update && \
     lldb \
     python3-venv \
     openvpn \
+    bsdmainutils \
     libtool && \
     rm -rf /var/lib/apt/list/*
 
