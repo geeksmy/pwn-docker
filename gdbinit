@@ -4,3 +4,5 @@
 #source /pwndbg/gdbinit.py
 #source /root/.gdbinit-gef.py
 #source /root/peda/peda.py
+
+source /root/exploitable/exploitable/exploitable.py
